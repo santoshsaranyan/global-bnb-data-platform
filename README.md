@@ -31,5 +31,15 @@ Snowflake will serve as the primary data warehouse, hosting production-ready tab
 - **Cloud Storage**: Google Cloud Storage (GCS)
 - **Version Control & CI/CD**: GitHub
 
-## Note
-Although this project draws from the same underlying Airbnb dataset as the Boston BnB Insights App, it is a complete re-architecture of that work. The Global BnB Data Platform expands the scope beyond Boston to multiple cities and countries and is built with a modern ELT stack, leveraging Airflow, dbt, Snowflake, and GCS to enable scalable data pipelines and proper cloud-based warehousing.
+
+## Source for the Dataset
+https://insideairbnb.com
+
+> ## Note
+> Although this project draws from the same underlying Airbnb dataset as the Boston BnB Insights App, it is a complete re-architecture of that work. The Global BnB Data Platform expands the scope beyond Boston to multiple cities and countries and is built with a modern ELT stack, leveraging Airflow, dbt, Snowflake, and GCS to enable scalable data pipelines and proper cloud-based warehousing.
+
+
+## Code Author
+Santosh Saranyan
+
+https://www.linkedin.com/in/santosh-saranyan/
