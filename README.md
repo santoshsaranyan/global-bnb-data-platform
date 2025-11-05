@@ -18,7 +18,7 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 ### Ingestion and Staging:
 Raw Airbnb datasets will be ingested and stored in Google Cloud Storage (GCS) for durability and scalability.
 ### Orchestration:
-Apache Airflow, hosted on DigitalOcean, will manage the end-to-end data flow through scheduled DAGs, handling ingestion, transformation, and loading tasks.
+Apache Airflow will manage the end-to-end data flow through scheduled DAGs, handling ingestion, transformation, and loading tasks.
 ### Transformation:
 dbt will perform data cleaning, modeling, and transfomation using SQL, following the Medallion architecture pattern (Bronze → Silver → Gold).
 ### Warehouse:
@@ -26,7 +26,7 @@ Snowflake will serve as the primary data warehouse, hosting production-ready tab
 
 ## Technology Stack
 - **Language**: Python, SQL
-- **Pipeline Orchestration**: Apache Airflow (hosted on DigitalOcean, containerized with Docker)
+- **Pipeline Orchestration**: Apache Airflow
 - **Data Transformation**: dbt
 - **Data Warehouse**: Snowflake
 - **Cloud Storage**: Google Cloud Storage (GCS)
