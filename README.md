@@ -30,7 +30,7 @@ Snowflake will serve as the primary data warehouse, hosting production-ready tab
 - **Data Transformation**: dbt
 - **Data Warehouse**: Snowflake
 - **Cloud Storage**: Google Cloud Storage (GCS)
-- **Version Control & CI/CD**: GitHub
+- **Containerization for Airflow + dbt Deployment**: Docker
 
 
 ## Source for the Dataset
