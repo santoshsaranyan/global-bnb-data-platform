@@ -26,12 +26,10 @@ Snowflake will serve as the primary data warehouse, hosting production-ready tab
 
 ## Technology Stack
 - **Language**: Python, SQL
-- **Pipeline Orchestration**: Apache Airflow (hosted on DigitalOcean)
+- **Pipeline Orchestration**: Apache Airflow (hosted on DigitalOcean, containerized with Docker)
 - **Data Transformation**: dbt
 - **Data Warehouse**: Snowflake
 - **Cloud Storage**: Google Cloud Storage (GCS)
-- **Containerization for Airflow + dbt Deployment**: Docker
-
 
 ## Source for the Dataset
 https://insideairbnb.com
