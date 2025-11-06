@@ -1,17 +1,19 @@
 services:
   postgres:
     image: postgres:16
-    container_name: postgres_db
+    container_name: postgres_dbt
     restart: always
     environment:
       POSTGRES_USER: ${dev_user}
       POSTGRES_PASSWORD: ${dev_password}
       POSTGRES_DB: ${dev_db_name}
     ports:
-      - "5432:5432"
+      - "5434:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_dbt_data:/var/lib/postgresql/data
       - ./initdb:/docker-entrypoint-initdb.d
+    networks:
+      - data_net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${dev_user} -d ${dev_db_name}"]
       interval: 5s
@@ -20,4 +22,8 @@ services:
       start_period: 10s
 
 volumes:
-  postgres_data:
+  postgres_dbt_data:
+
+networks:
+  data_net:
+    external: true
