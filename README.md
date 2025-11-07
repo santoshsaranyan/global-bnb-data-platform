@@ -7,11 +7,11 @@ The Global BnB Data Platform is a cloud-native data engineering project designed
 This project aims to build an automated and scalable pipeline for ingesting, transforming, and warehousing Airbnb datasets across multiple cities (and countries). It focuses on data pipeline orchestration, data modeling, and warehouse design, rather than analytics or visualization.
 
 ## Technology Stack
-- **Language**: ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
-- **Pipeline Orchestration**: ![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
-- **Data Transformation**: ![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white)
-- **Data Warehouse**: ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white)
-- **Cloud Storage**: ![Google Cloud Storage (GCS)](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
+- ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) - Data Extraction
+- ![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white) - Pipeline Orchestration
+- ![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white) - Data Transformation
+- ![Google Cloud Storage (GCS)](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white) - Cloud Storage
+- ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white) - Data Warehouse
 
 ## Objectives
 - Develop a fully automated ELT pipeline from raw data ingestion to warehouse loading.
