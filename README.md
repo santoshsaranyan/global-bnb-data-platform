@@ -6,6 +6,13 @@
 The Global BnB Data Platform is a cloud-native data engineering project designed to demonstrate a modern ELT architecture using Apache Airflow, dbt, Google Cloud Storage (GCS), and Snowflake.
 This project aims to build an automated and scalable pipeline for ingesting, transforming, and warehousing Airbnb datasets across multiple cities (and countries). It focuses on data pipeline orchestration, data modeling, and warehouse design, rather than analytics or visualization.
 
+## Technology Stack
+- **Language**: ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+- **Pipeline Orchestration**: ![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)
+- **Data Transformation**: ![dbt](https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white)
+- **Data Warehouse**: ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white)
+- **Cloud Storage**: ![Google Cloud Storage (GCS)](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
+
 ## Objectives
 - Develop a fully automated ELT pipeline from raw data ingestion to warehouse loading.
 - Implement Airflow DAGs for end-to-end orchestration and scheduling.
@@ -23,13 +30,6 @@ Apache Airflow will manage the end-to-end data flow through scheduled DAGs, hand
 dbt will perform data cleaning, modeling, and transfomation using SQL, following the Medallion architecture pattern (Bronze → Silver → Gold).
 ### Warehouse:
 Snowflake will serve as the primary data warehouse, hosting production-ready tables optimized for downstream use cases.
-
-## Technology Stack
-- **Language**: Python, SQL
-- **Pipeline Orchestration**: Apache Airflow
-- **Data Transformation**: dbt
-- **Data Warehouse**: Snowflake
-- **Cloud Storage**: Google Cloud Storage (GCS)
 
 ## Source for the Dataset
 https://insideairbnb.com
