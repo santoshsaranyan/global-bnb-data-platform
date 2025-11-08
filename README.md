@@ -22,6 +22,7 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 - Follow modular, maintainable, and production-ready data engineering design principles.
   
 ## Planned Architecture
+![Data Architecture](https://github.com/santoshsaranyan/global-bnb-data-platform/blob/main/images/GlobalBnBDataPlatformImage.png)
 ### Ingestion and Staging:
 Raw Airbnb datasets will be ingested and stored in Google Cloud Storage (GCS) for durability and scalability.
 ### Orchestration:
