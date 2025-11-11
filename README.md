@@ -33,7 +33,15 @@ dbt will perform data cleaning, modeling, and transfomation using SQL, following
 Snowflake will serve as the primary data warehouse, hosting production-ready tables optimized for downstream use cases.
 
 ## Source for the Dataset
+
+#### AirBnB Data:
 https://insideairbnb.com
+
+#### Weather Data:
+https://open-meteo.com
+
+#### City Tourism Trends Data:
+https://trends.google.com/trends (via PyTrends Package)
 
 > ## Note
 > Although this project draws from the same underlying Airbnb dataset as the Boston BnB Insights App, it is a complete re-architecture of that work. The Global BnB Data Platform expands the scope beyond Boston to multiple cities and countries and is built with a modern ELT stack, leveraging Airflow, dbt, Snowflake, and GCS to enable scalable data pipelines and proper cloud-based warehousing.
