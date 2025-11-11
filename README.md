@@ -44,6 +44,9 @@ https://open-meteo.com
 #### City Tourism Trends Data:
 https://trends.google.com/trends (via PyTrends Package)
 
+#### Public Holidays (dbt Seed):
+https://learn.microsoft.com/en-us/azure/open-datasets/dataset-public-holidays?tabs=azureml-opendatasets 
+
 > ## Note
 > Although this project draws from the same underlying Airbnb dataset as the Boston BnB Insights App, it is a complete re-architecture of that work. The Global BnB Data Platform expands the scope beyond Boston to multiple cities and countries and is built with a modern ELT stack, leveraging Airflow, dbt, Snowflake, and GCS to enable scalable data pipelines and proper cloud-based warehousing.
 
