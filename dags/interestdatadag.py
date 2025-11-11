@@ -98,9 +98,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         
             return None
 
-        # Aggregate interest across keywords
         interest_cols = [c for c in df.columns if c in kw_list]
-        df["aggregate_interest"] = df[interest_cols].max(axis=1)
 
         # Rename keyword columns to standardized format
         rename_map = {col: col.lower().replace(" ", "_") for col in interest_cols}
