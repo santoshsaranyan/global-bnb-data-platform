@@ -33,7 +33,7 @@ dbt will perform data cleaning, modeling, and transfomation using SQL, following
 ### Warehouse:
 Snowflake will serve as the primary data warehouse, hosting production-ready tables optimized for downstream use cases.
 
-## Source for the Dataset
+## Source for the Data
 
 #### AirBnB Data:
 https://insideairbnb.com
