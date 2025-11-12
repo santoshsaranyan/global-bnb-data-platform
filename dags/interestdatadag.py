@@ -72,6 +72,8 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         f"visit {city_clean}",
         f"{city_clean} tourism",
         f"things to do in {city_clean}",
+        f"{city_clean} attractions",
+        f"{city_clean} airbnb",
     ]
 
     # Configure pytrends
@@ -101,12 +103,8 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         interest_cols = [c for c in df.columns if c in kw_list]
 
         # Rename keyword columns to standardized format
-        rename_map = {col: col.lower().replace(" ", "_") for col in interest_cols}
+        rename_map = {col: col.lower().replace(" ", "_").replace(f'{city_clean}','city') for col in interest_cols}
         df = df.rename(columns=rename_map)
-
-        # Add city/country context columns
-        df.insert(0, "city_name", city_name)
-        df.insert(1, "country_name", country_name)
 
         logging.info(f"Fetched {len(df)} rows for {city_name}. Sample:\n{df.head(5).to_string()}")
         logging.info(df.dtypes)

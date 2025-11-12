@@ -155,8 +155,6 @@ def fetch_and_upload_weather_daily(city_info: dict, bucket_name: str, weather_ur
             weather_df = pd.DataFrame(weather_json["daily"]).copy()
             weather_df.rename(columns={"time": "date"}, inplace=True)
             weather_df["date"] = pd.to_datetime(weather_df["date"]).dt.strftime("%Y-%m-%d")
-            weather_df.insert(0, "city_name", city_name)
-            weather_df.insert(1, "country_name", country_name)
             
             logging.info(f"Fetched {len(weather_df)} rows of weather data for {city_name}.")
             logging.info(weather_df.head().to_string())
