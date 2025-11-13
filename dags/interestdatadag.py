@@ -70,9 +70,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
     city_clean = city_name.strip()
     kw_list = [
         f"visit {city_clean}",
-        f"{city_clean} tourism",
         f"things to do in {city_clean}",
-        f"{city_clean} attractions",
         f"{city_clean} airbnb",
     ]
 
