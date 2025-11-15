@@ -62,7 +62,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         logging.info(f"Exists, skipping: gs://{bucket_name}/{object_name}")
         return None
 
-    headers = {"User-Agent": "Mozilla/5.0 (+requests)"}
+    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"} #Mozilla/5.0 (+requests)
     timeframe = "today 3-m"
     geo = ""
 
@@ -101,7 +101,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         interest_cols = [c for c in df.columns if c in kw_list]
 
         # Rename keyword columns to standardized format
-        rename_map = {col: col.lower().replace(" ", "_").replace(f'{city_clean}','city') for col in interest_cols}
+        rename_map = {col: col.replace(f'{city_clean}','city').lower().replace(" ", "_") for col in interest_cols}
         df = df.rename(columns=rename_map)
 
         logging.info(f"Fetched {len(df)} rows for {city_name}. Sample:\n{df.head(5).to_string()}")
