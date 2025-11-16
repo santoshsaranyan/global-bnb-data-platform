@@ -14,7 +14,7 @@ sources:
         description: "Raw InsideAirbnb calendar/availability data at the bronze level for all cities"
 
       - name: raw_weather
-        description: "Raw daily weather data from Open-Meteo at bronze level for all cities"
+        description: "Raw daily weather data from Open Meteo at bronze level for all cities"
 
       - name: raw_trends
-        description: "Raw Google Trends interest-over-time data at the bronze level for all cities"
+        description: "Raw Google Trends interest over time data at the bronze level for all cities"
