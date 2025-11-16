@@ -1,6 +1,11 @@
 with stg_listings as (
     select
-        id,
+        {{ dbt_utils.generate_surrogate_key([
+            'city',
+            'country',
+            'id',
+        ]) }} AS listing_id,
+        id AS listing_cid,
         listing_url,
         scrape_id,
         last_scraped::DATE,
