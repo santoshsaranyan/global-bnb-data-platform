@@ -1,20 +1,21 @@
 sources:
   - name: bronze
-    database: "globalbnbdb"
-    schema: "bronze"
+    description: "Layer with Raw data sources for the Data Warehouse"
+    database: globalbnbdb
+    schema: bronze
 
     tables:
-      - name: raw_listings
+      - name: insideairbnb__raw_listings
         description: "Raw InsideAirbnb listings data at the bronze level for all cities"
 
-      - name: raw_reviews
+      - name: insideairbnb__raw_reviews
         description: "Raw InsideAirbnb reviews data at the bronze level for all cities"
 
-      - name: raw_calendar
+      - name: insideairbnb__raw_calendar
         description: "Raw InsideAirbnb calendar/availability data at the bronze level for all cities"
 
-      - name: raw_weather
+      - name: openmeteo__raw_weather
         description: "Raw daily weather data from Open Meteo at bronze level for all cities"
 
-      - name: raw_trends
+      - name: googletrends__raw_trends
         description: "Raw Google Trends interest over time data at the bronze level for all cities"

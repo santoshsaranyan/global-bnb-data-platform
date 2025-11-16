@@ -6,7 +6,7 @@ name: 'global_bnb_dbt'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'global_bnb_dbt'
+profile: 'gb_dev_postgres'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -33,4 +33,4 @@ models:
   global_bnb_dbt:
     # Config indicated by + and applies to all files under models/example/
     example:
-      +materialized: view
+      +materialized: table
