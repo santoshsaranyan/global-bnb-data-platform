@@ -1,7 +1,6 @@
 # Global BnB Data Platform
 > ## Note
-> This project is a Work in Progress. 
-> Some design choices in this project were made intentionally for learning purposes.
+> This project is a Work in Progress.
 
 ## Overview
 The Global BnB Data Platform is a cloud-native data engineering project designed to demonstrate a modern ELT architecture using Apache Airflow, dbt, Google Cloud Storage (GCS), and Snowflake.
