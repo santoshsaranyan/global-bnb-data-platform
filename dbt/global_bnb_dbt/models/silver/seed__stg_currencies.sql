@@ -1,7 +1,7 @@
 WITH stg_currencies AS (
     SELECT
         *
-    FROM {{ ref('country_currencies') }}
+    FROM {{ ref('seed__country_currencies') }}
 )
 
-select * from stg_currencies;
+select * from stg_currencies

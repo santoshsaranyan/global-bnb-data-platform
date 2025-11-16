@@ -4,4 +4,4 @@ WITH stg_reviews AS (
     FROM {{ source('bronze', 'insideairbnb__raw_reviews') }}
 )
 
-select * from stg_reviews;
+select * from stg_reviews

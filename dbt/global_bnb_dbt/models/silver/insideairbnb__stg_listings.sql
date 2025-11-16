@@ -105,4 +105,4 @@ with stg_listings as (
     from {{ source('bronze', 'insideairbnb__raw_listings') }}
 )
 
-select * from stg_listings;
+select * from stg_listings
