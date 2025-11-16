@@ -103,6 +103,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         # Rename keyword columns to standardized format
         rename_map = {col: col.replace(f'{city_clean}','city').lower().replace(" ", "_") for col in interest_cols}
         df = df.rename(columns=rename_map)
+        df = df.reset_index()
 
         logging.info(f"Fetched {len(df)} rows for {city_name}. Sample:\n{df.head(5).to_string()}")
         logging.info(df.dtypes)
@@ -110,7 +111,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         try:
             # Upload as Parquet
             parquet_buffer = io.BytesIO()
-            df.to_parquet(parquet_buffer, index=True)
+            df.to_parquet(parquet_buffer, index=False)
             parquet_bytes = parquet_buffer.getvalue()
 
             gcs_hook.upload(
