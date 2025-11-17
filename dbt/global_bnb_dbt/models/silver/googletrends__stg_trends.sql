@@ -17,6 +17,7 @@ WITH stg_trends AS (
         country,
         extract_month
     FROM {{ source('bronze', 'googletrends__raw_trends') }}
+    WHERE "isPartial" = 'False'
 )
 
 select * from stg_trends
