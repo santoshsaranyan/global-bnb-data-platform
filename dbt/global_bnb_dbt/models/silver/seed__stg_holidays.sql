@@ -1,5 +1,10 @@
 WITH stg_holidays AS (
     SELECT
+        {{ dbt_utils.generate_surrogate_key([
+            'country_code',
+            'holiday_date',
+            'holiday_name'
+        ]) }} AS holiday_id,
         "countryOrRegion" as country,
         date::DATE as holiday_date,
         "holidayName" as holiday_name,
