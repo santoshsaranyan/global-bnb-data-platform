@@ -16,8 +16,8 @@ from utilities.cityfetcher import fetch_cities, flatten_cities
 default_args = {
     "owner": "airflow",
     "start_date": datetime(2025, 1, 1),
-    "retries": 1,
-    "retry_delay": timedelta(seconds=30),
+    "retries": 2,
+    "retry_delay": timedelta(seconds=300),
 }
 
 # Airflow Variables

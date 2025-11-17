@@ -24,8 +24,8 @@ bucket_name = Variable.get("GCS_BUCKET_NAME")
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2025, 1, 1),
-    'retries': 1,
-    'retry_delay': timedelta(seconds=30)
+    'retries': 2,
+    'retry_delay': timedelta(seconds=300)
 }
     
 @task(multiple_outputs=False)
