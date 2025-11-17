@@ -63,7 +63,7 @@ def fetch_and_upload_travel_interest(city_info: dict, bucket_name: str, max_retr
         return None
 
     headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"} #Mozilla/5.0 (+requests)
-    timeframe = "today 3-m"
+    timeframe = "now 30-d"
     geo = ""
 
     # Build the keyword list

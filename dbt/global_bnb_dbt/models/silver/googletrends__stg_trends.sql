@@ -1,10 +1,11 @@
 WITH stg_trends AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
+            'date',
             'city',
-            'country',
-            'extract_month'
+            'country'
         ]) }} AS trend_id,
+        date::DATE as trend_date,
         visit_city::INTEGER,
         things_to_do_in_city::INTEGER,
         city_airbnb::INTEGER,
