@@ -379,3 +379,61 @@ models:
         description: "YYYYMM batch month for the extract."
         tests:
           - not_null
+
+  - name: seed__stg_holidays
+    description: "Staging model for global public holiday data sourced from Azure Public Holidays seed."
+    columns:
+      - name: holiday_id
+        description: "Surrogate key for holiday (country + date + name)."
+        tests:
+          - not_null
+          - unique
+
+      - name: country
+        description: "Country or region where the holiday applies."
+        tests:
+          - not_null
+
+      - name: holiday_date
+        description: "Date of the holiday."
+        tests:
+          - not_null
+
+      - name: holiday_name
+        description: "Official name of the holiday."
+
+      - name: normalized_holiday_name
+        description: "Normalized version of the holiday name for consistent grouping."
+
+      - name: is_paid_time_off
+        description: "Whether the holiday is considered paid time off."
+        tests:
+          - accepted_values:
+              values: [true, false, NULL]
+              quote: false
+
+      - name: country_code
+        description: "Two-letter or country code associated with the holiday."
+
+  - name: seed__stg_currencies
+    description: "Staging model for country-to-currency lookup data."
+    columns:
+      - name: currency_id
+        description: "Surrogate key for the currency record (country + currency_code)."
+        tests:
+          - not_null
+          - unique
+
+      - name: country
+        description: "Country name."
+        tests:
+          - not_null
+
+      - name: currency_code
+        description: "Three letter currency code."
+        tests:
+          - not_null
+
+      - name: currency_name
+        description: "Name of the currency."
+
