@@ -12,8 +12,8 @@ WITH stg_calendar AS (
             WHEN available = 't' THEN TRUE
             WHEN available = 'f' THEN FALSE
         END AS is_available,
-        price::NUMERIC(10,2),
-        adjusted_price::NUMERIC(10,2),
+        REGEXP_REPLACE(price,'[^0-9\.]', '', 'g')::NUMERIC(10,2) AS price,
+        REGEXP_REPLACE(adjusted_price,'[^0-9\.]', '', 'g')::NUMERIC(10,2) AS adjusted_price,
         minimum_nights::INTEGER,
         maximum_nights::INTEGER,
         city,
