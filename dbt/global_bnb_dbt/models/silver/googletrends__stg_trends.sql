@@ -5,7 +5,7 @@ WITH stg_trends AS (
             'city',
             'country'
         ]) }} AS trend_id,
-        date::DATE as trend_date,
+        date::DATE AS trend_date,
         visit_city::INTEGER,
         things_to_do_in_city::INTEGER,
         city_airbnb::INTEGER,
@@ -20,4 +20,4 @@ WITH stg_trends AS (
     WHERE "isPartial" = 'False'
 )
 
-select * from stg_trends
+SELECT * FROM stg_trends

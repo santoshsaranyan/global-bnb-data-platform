@@ -10,4 +10,4 @@ WITH stg_currencies AS (
     FROM {{ ref('seed__country_currencies') }}
 )
 
-select * from stg_currencies
+SELECT * FROM stg_currencies

@@ -16,4 +16,4 @@ WITH stg_weather AS (
     FROM {{ source('bronze', 'openmeteo__raw_weather') }}
 )
 
-select * from stg_weather
+SELECT * FROM stg_weather

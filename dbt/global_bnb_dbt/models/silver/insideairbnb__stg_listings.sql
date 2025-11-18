@@ -1,5 +1,5 @@
 with stg_listings as (
-    select
+    SELECT
         {{ dbt_utils.generate_surrogate_key([
             'city',
             'country',
@@ -92,7 +92,7 @@ with stg_listings as (
         first_review::DATE,
         last_review::DATE,
         review_scores_rating::NUMERIC(4,2) AS overall_rating,
-        review_scores_accuracy::NUMERIC(4,2), AS accuracy_rating,
+        review_scores_accuracy::NUMERIC(4,2) AS accuracy_rating,
         review_scores_cleanliness::NUMERIC(4,2) AS cleanliness_rating,
         review_scores_checkin::NUMERIC(4,2) AS checkin_rating,
         review_scores_communication::NUMERIC(4,2) AS communication_rating,
@@ -112,7 +112,7 @@ with stg_listings as (
         city,
         country,
         extract_month
-    from {{ source('bronze', 'insideairbnb__raw_listings') }}
+    FROM {{ source('bronze', 'insideairbnb__raw_listings') }}
 )
 
-select * from stg_listings
+SELECT * FROM stg_listings

@@ -11,12 +11,12 @@ WITH stg_reviews AS (
         id AS review_cid,
         date::DATE AS review_date,
         reviewer_id,
-        COALESCE(reviewer_name,'Unknown') as reviewer_name,
-        COALESCE(comments,'No comments provided') as comments,
+        COALESCE(reviewer_name,'Unknown') AS reviewer_name,
+        COALESCE(comments,'No comments provided') AS comments,
         city,
         country,
         extract_month
     FROM {{ source('bronze', 'insideairbnb__raw_reviews') }}
 )
 
-select * from stg_reviews
+SELECT * FROM stg_reviews

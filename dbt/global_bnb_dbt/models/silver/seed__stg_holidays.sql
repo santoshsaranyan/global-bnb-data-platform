@@ -1,17 +1,27 @@
 WITH stg_holidays AS (
     SELECT
+        "countryOrRegion" AS country,
+        date::DATE AS holiday_date,
+        "holidayName" AS holiday_name,
+        "normalizeHolidayName" AS normalized_holiday_name,
+        "isPaidTimeOff" AS is_paid_time_off,
+        "countryRegionCode" AS country_code
+    FROM {{ ref('seed__public_holidays') }}
+),
+final_stg_holidays AS (
+    SELECT
         {{ dbt_utils.generate_surrogate_key([
-            'country_code',
+            'country',
             'holiday_date',
             'holiday_name'
         ]) }} AS holiday_id,
-        "countryOrRegion" as country,
-        date::DATE as holiday_date,
-        "holidayName" as holiday_name,
-        "normalizeHolidayName" as normalized_holiday_name,
-        "isPaidTimeOff" as is_paid_time_off,
-        "countryRegionCode" as country_code
-    FROM {{ ref('seed__public_holidays') }}
+        country,
+        holiday_date,
+        holiday_name,
+        normalized_holiday_name,
+        is_paid_time_off,
+        country_code
+    FROM stg_holidays
 )
 
-select * from stg_holidays
+SELECT * FROM final_stg_holidays
