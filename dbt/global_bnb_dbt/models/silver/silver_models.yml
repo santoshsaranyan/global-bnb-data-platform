@@ -239,3 +239,143 @@ models:
         description: "YYYYMM batch month for the extract."
         tests:
           - not_null
+
+  - name: insideairbnb__stg_calendar
+    description: "Staging model for InsideAirbnb daily calendar/pricing and availability."
+    columns:
+      - name: calendar_id
+        description: "Surrogate key for calendar row (listing + date + geography)."
+        tests:
+          - not_null
+          - unique
+
+      - name: listing_cid
+        description: "Source listing identifier this calendar row belongs to."
+        tests:
+          - not_null
+
+      - name: calendar_date
+        description: "Calendar date for the availability and price."
+        tests:
+          - not_null
+
+      - name: is_available
+        description: "Flag indicating whether the listing is available on this date."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: price
+        description: "Base price for this date, numeric value stripped of currency symbols."
+
+      - name: adjusted_price
+        description: "Adjusted price for this date."
+
+      - name: minimum_nights
+        description: "Minimum nights allowed for a booking on this date."
+
+      - name: maximum_nights
+        description: "Maximum nights allowed for a booking on this date."
+
+      - name: city
+        description: "City in which the listing is located."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country in which the listing is located."
+        tests:
+          - not_null
+
+      - name: extract_month
+        description: "YYYYMM batch month for the extract."
+        tests:
+          - not_null
+
+  - name: googletrends__stg_trends
+    description: "Staging model for Google Trends travel/interest signals by city and country."
+    columns:
+      - name: trend_id
+        description: "Surrogate key for trends row (date + geography)."
+        tests:
+          - not_null
+          - unique
+
+      - name: trend_date
+        description: "Date of the trend measurement."
+        tests:
+          - not_null
+
+      - name: visit_city
+        description: "Interest index for 'visit <city>' query (0-100)."
+
+      - name: things_to_do_in_city
+        description: "Interest index for 'things to do in <city>' query (0-100)."
+
+      - name: city_airbnb
+        description: "Interest index for '<city> airbnb' query (0-100)."
+
+      - name: is_partial
+        description: "Flag indicating whether the time series value is partial for the given date."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: city
+        description: "City for which the trend data is measured."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country for which the trend data is measured."
+        tests:
+          - not_null
+
+      - name: extract_month
+        description: "YYYYMM batch month for the extract."
+        tests:
+          - not_null
+
+  - name: openmeteo__stg_weather
+    description: "Staging model for Open-Meteo daily weather data by city and country."
+    columns:
+      - name: weather_id
+        description: "Surrogate key for weather row (date + geography)."
+        tests:
+          - not_null
+          - unique
+
+      - name: weather_date
+        description: "Date of the daily weather observation."
+        tests:
+          - not_null
+
+      - name: temperature_2m_max
+        description: "Daily maximum temperature at 2m height (Celsius)."
+
+      - name: temperature_2m_min
+        description: "Daily minimum temperature at 2m height (Celsius)."
+
+      - name: temperature_2m_mean
+        description: "Daily mean temperature at 2m height (Celsius)."
+
+      - name: precipitation_sum
+        description: "Total daily precipitation (mm)."
+
+      - name: city
+        description: "City for which the weather data is measured."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country for which the weather data is measured."
+        tests:
+          - not_null
+
+      - name: extract_month
+        description: "YYYYMM batch month for the extract."
+        tests:
+          - not_null
