@@ -13,7 +13,7 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 - ![Google Cloud Storage (GCS)](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white) - Cloud Storage
 - ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white) - Data Warehouse
 
-## Objectives
+## Project Objectives
 - Develop a fully automated ELT pipeline from raw data ingestion to warehouse loading.
 - Implement Airflow DAGs for end-to-end orchestration and scheduling.
 - Use dbt to define, document, and version-control SQL-based data transformations.
@@ -24,13 +24,13 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 ## Data Architecture
 ![Data Architecture](https://github.com/santoshsaranyan/global-bnb-data-platform/blob/main/images/GlobalBnBDataPlatformImage.png)
 ### Ingestion and Staging:
-Raw Airbnb datasets, weather data and tourism trends data will be ingested and stored in Google Cloud Storage (GCS) for durability and scalability.
+Raw Airbnb datasets, weather data and tourism trends data are ingested and stored in Google Cloud Storage (GCS).
 ### Orchestration:
-Apache Airflow will manage the end-to-end data flow through scheduled DAGs, handling ingestion, transformation, and loading tasks.
+Apache Airflow (through the Astro CLI and Astronomer cosmos for dbt interaction) manages the end-to-end data flow through scheduled DAGs, handling ingestion, transformation, and loading tasks.
 ### Transformation:
-dbt will perform data cleaning, modeling, and transfomation using SQL, following the Medallion architecture pattern (Bronze → Silver → Gold).
+dbt is used to perform data cleaning, modeling, and transfomation using SQL, following the Medallion architecture pattern (Bronze -> Silver -> Gold).
 ### Warehouse:
-Snowflake will serve as the primary data warehouse, hosting production-ready tables optimized for downstream use cases.
+Snowflake serves as the primary data warehouse, hosting production-ready tables optimized for downstream use cases.
 
 ## Source for the Data
 
