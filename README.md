@@ -24,7 +24,7 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 ## Data Architecture
 ![Data Architecture](https://github.com/santoshsaranyan/global-bnb-data-platform/blob/main/images/GlobalBnBDataPlatformImage.png)
 ### Ingestion and Staging:
-Raw Airbnb datasets, weather data and tourism trends data are ingested and stored in Google Cloud Storage (GCS).
+Raw Airbnb datasets, weather data and tourism trends data are ingested (via webscraping and API calls) and stored in Google Cloud Storage (GCS).
 ### Orchestration:
 Apache Airflow (through the Astro CLI and Astronomer cosmos for dbt interaction) manages the end-to-end data flow through scheduled DAGs, handling ingestion, transformation, and loading tasks.
 ### Transformation:
