@@ -1,7 +1,6 @@
 # Silver Data Catalog — Staging Models
 
-This catalog documents all staging models in the InsideAirbnb, Google Trends, Open-Meteo, and seed layers of your warehouse.  
-Each table includes column-level descriptions and associated tests.
+This catalog documents all staging models in the silver layer of the data warehouse.  
 
 ---
 
