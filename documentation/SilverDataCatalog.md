@@ -1,4 +1,4 @@
-# Silver Data Catalog — Staging Models
+# Silver Data Catalog - Staging Models
 
 This catalog documents all staging models in the silver layer of the data warehouse.  
 
