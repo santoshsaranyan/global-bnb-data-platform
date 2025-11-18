@@ -14,7 +14,7 @@ with stg_listings as (
         COALESCE(description,'No information provided') AS listing_description,
         COALESCE(neighborhood_overview,'No information provided') AS neighborhood_overview,
         picture_url,
-        host_id,
+        host_id AS host_cid,
         host_url,
         COALESCE(host_name,'Unknown') AS host_name,
         host_since,

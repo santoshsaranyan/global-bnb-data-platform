@@ -1,0 +1,241 @@
+models:
+  - name: insideairbnb__stg_listings
+    description: "Staging model for InsideAirbnb listings."
+    columns:
+      - name: listing_id
+        description: "Surrogate key for the listing (city + country + listing_cid)."
+        tests:
+          - not_null
+          - unique
+
+      - name: listing_cid
+        description: "Source listing ID from InsideAirbnb."
+        tests:
+          - not_null
+
+      - name: city
+        description: "City where the listing is located."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country where the listing is located."
+        tests:
+          - not_null
+
+      - name: extract_month
+        description: "YYYYMM batch month for the extract."
+        tests:
+          - not_null
+
+      - name: source_last_scraped
+        description: "Date when the listing was last scraped by InsideAirbnb."
+
+      - name: source_platform
+        description: "Platform/source of the listing data by InsideAirbnb."
+
+      - name: listing_name
+        description: "Listing title/name"
+
+      - name: listing_description
+        description: "Listing description"
+
+      - name: neighbourhood_overview
+        description: "Host's description of the neighbourhood."
+
+      - name: latitude
+        description: "Latitude of the listing."
+
+      - name: longitude
+        description: "Longitude of the listing."
+
+      - name: property_type
+        description: "Property type (e.g. Apartment, House, etc.)."
+
+      - name: room_type
+        description: "Room type (Entire home/apt, Private room, etc.)."
+
+      - name: accommodates
+        description: "Number of guests the listing accommodates."
+
+      - name: bathrooms
+        description: "Number of bathrooms the listing has."
+
+      - name: bathroom_type
+        description: "Bathroom type derived from text (Shared / Private)."
+
+      - name: beds
+        description: "Number of beds the listing has."
+
+      - name: bedrooms
+        description: "Number of bedrooms the listing has."
+
+      - name: price
+        description: "Nightly price, numeric value stripped of currency symbols."
+
+      - name: has_availability
+        description: "Flag indicating if listing has availability in the calendar."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: instant_bookable
+        description: "Flag indicating if listing is instantly bookable."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_cid
+        description: "Host identifier from the source."
+
+      - name: host_name
+        description: "Host name."
+
+      - name: host_response_time
+        description: "Host response time"
+
+      - name: host_response_rate
+        description: "Host response rate as numeric percentage."
+
+      - name: host_acceptance_rate
+        description: "Host acceptance rate as numeric percentage."
+
+      - name: host_is_superhost
+        description: "Flag indicating whether host is a Superhost."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_has_profile_pic
+        description: "Flag indicating whether host has a profile picture."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_identity_verified
+        description: "Flag indicating whether host identity is verified."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: overall_rating
+        description: "Overall review score rating for the listing."
+
+      - name: accuracy_rating
+        description: "Accuracy review score rating for the listing."
+
+      - name: cleanliness_rating
+        description: "Cleanliness review score rating for the listing."
+
+      - name: checkin_rating
+        description: "Check-in review score rating for the listing."
+
+      - name: communication_rating
+        description: "Communication review score rating for the listing."
+
+      - name: location_rating
+        description: "Location review score rating for the listing."
+
+      - name: value_rating
+        description: "Value review score rating for the listing."
+
+      - name: license
+        description: "License information with default when missing."
+
+      - name: number_of_reviews
+        description: "Total number of reviews for the listing."
+
+      - name: number_of_reviews_ltm
+        description: "Number of reviews in the last 12 months."
+
+      - name: number_of_reviews_l30d
+        description: "Number of reviews in the last 30 days."
+
+      - name: estimated_occupancy_l365d
+        description: "Estimated occupancy over the last 365 days."
+
+      - name: estimated_revenue_l365d
+        description: "Estimated revenue over the last 365 days."
+
+      - name: first_review
+        description: "Date of the first review for the listing."
+
+      - name: last_review
+        description: "Date of the most recent review for the listing."
+
+      - name: reviews_per_month
+        description: "Average number of reviews per month."
+
+      - name: listing_neighbourhood
+        description: "Neighbourhood of the listing."
+
+      - name: listing_neighbourhood_cleansed
+        description: "Cleansed neighbourhood value."
+
+      - name: neighbourhood_group_cleansed
+        description: "Cleansed high-level neighbourhood group."
+
+      - name: calculated_host_listings_count
+        description: "Calculated count of all listings for the host."
+
+      - name: calculated_host_listings_count_entire_homes
+        description: "Calculated count of host's entire-home listings."
+
+      - name: calculated_host_listings_count_private_rooms
+        description: "Calculated count of host's private-room listings."
+
+      - name: calculated_host_listings_count_shared_rooms
+        description: "Calculated count of host's shared-room listings."
+
+  - name: insideairbnb__stg_reviews
+    description: "Staging model for InsideAirbnb reviews."
+    columns:
+      - name: review_id
+        description: "Surrogate key for the review (listing + review + date + geography)."
+        tests:
+          - not_null
+          - unique
+
+      - name: listing_cid
+        description: "Source listing identifier this review belongs to."
+        tests:
+          - not_null
+
+      - name: review_cid
+        description: "Source review identifier."
+        tests:
+          - not_null
+
+      - name: review_date
+        description: "Date of the review."
+        tests:
+          - not_null
+
+      - name: reviewer_id
+        description: "Identifier for the reviewer."
+
+      - name: reviewer_name
+        description: "Name of the reviewer."
+
+      - name: comments
+        description: "Text of the review comment."
+
+      - name: city
+        description: "City for the reviewed listing."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country for the reviewed listing."
+        tests:
+          - not_null
+
+      - name: extract_month
+        description: "YYYYMM batch month for the extract."
+        tests:
+          - not_null
