@@ -7,15 +7,366 @@ sources:
     tables:
       - name: insideairbnb__raw_listings
         description: "Raw InsideAirbnb listings data at the bronze level for all cities"
+        columns:
+          - name: id
+            description: "Unique listing identifier assigned by InsideAirbnb."
+
+          - name: listing_url
+            description: "URL linking to the listing's page on the InsideAirbnb platform."
+
+          - name: scrape_id
+            description: "Identifier for the web scrape batch in which this listing record was collected."
+
+          - name: last_scraped
+            description: "Timestamp indicating when the listing was last scraped from the source."
+
+          - name: source
+            description: "Source platform from which the listing data was obtained."
+
+          - name: name
+            description: "Title or name of the listing as provided by the host."
+
+          - name: description
+            description: "Full textual description of the listing written by the host."
+
+          - name: neighborhood_overview
+            description: "Host-provided description of the surrounding neighbourhood."
+
+          - name: picture_url
+            description: "URL of the primary image associated with the listing."
+
+          - name: host_id
+            description: "Unique identifier of the host who owns the listing."
+
+          - name: host_url
+            description: "URL linking to the host's profile page."
+
+          - name: host_name
+            description: "Display name of the host."
+
+          - name: host_since
+            description: "Date when the host joined the platform."
+
+          - name: host_location
+            description: "Location of the host as provided in their profile."
+
+          - name: host_about
+            description: "Free-text biography or description written by the host."
+
+          - name: host_response_time
+            description: "Reported response time of the host (e.g. within an hour, within a day)."
+
+          - name: host_response_rate
+            description: "Percentage string indicating how often the host responds to inquiries."
+
+          - name: host_acceptance_rate
+            description: "Percentage string indicating how often the host accepts booking requests."
+
+          - name: host_is_superhost
+            description: "Flag indicating whether the host is designated as a Superhost (t/f)."
+
+          - name: host_thumbnail_url
+            description: "URL of the host's thumbnail profile image."
+
+          - name: host_picture_url
+            description: "URL of the host's full-size profile image."
+
+          - name: host_neighbourhood
+            description: "Neighbourhood associated with the host's location."
+
+          - name: host_listings_count
+            description: "Number of active listings owned by the host."
+
+          - name: host_total_listings_count
+            description: "Total number of listings (active and inactive) owned by the host."
+
+          - name: host_verifications
+            description: "List of verification methods completed by the host."
+
+          - name: host_has_profile_pic
+            description: "Flag indicating whether the host has a profile picture (t/f)."
+
+          - name: host_identity_verified
+            description: "Flag indicating whether the host's identity has been verified (t/f)."
+
+          - name: neighbourhood
+            description: "Neighbourhood name associated with the listing."
+
+          - name: neighbourhood_cleansed
+            description: "Normalized neighbourhood name provided by InsideAirbnb."
+
+          - name: neighbourhood_group_cleansed
+            description: "Higher-level neighbourhood or district grouping."
+
+          - name: latitude
+            description: "Latitude coordinate of the listing location."
+
+          - name: longitude
+            description: "Longitude coordinate of the listing location."
+
+          - name: property_type
+            description: "Type of property being listed (e.g. Apartment, House)."
+
+          - name: room_type
+            description: "Type of room offered (Entire home/apt, Private room, Shared room)."
+
+          - name: accommodates
+            description: "Maximum number of guests the listing can accommodate."
+
+          - name: bathrooms
+            description: "Number of bathrooms provided for the listing."
+
+          - name: bathrooms_text
+            description: "Textual description of bathroom availability and type."
+
+          - name: beds
+            description: "Number of beds available in the listing."
+
+          - name: bedrooms
+            description: "Number of bedrooms available in the listing."
+
+          - name: amenities
+            description: "List of amenities offered by the listing."
+
+          - name: price
+            description: "Nightly price of the listing including currency symbols."
+
+          - name: minimum_nights
+            description: "Minimum number of nights required for a booking."
+
+          - name: maximum_nights
+            description: "Maximum number of nights allowed for a booking."
+
+          - name: minimum_minimum_nights
+            description: "Minimum observed minimum nights value across calendar dates."
+
+          - name: maximum_minimum_nights
+            description: "Maximum observed minimum nights value across calendar dates."
+
+          - name: minimum_maximum_nights
+            description: "Minimum observed maximum nights value across calendar dates."
+
+          - name: maximum_maximum_nights
+            description: "Maximum observed maximum nights value across calendar dates."
+
+          - name: minimum_nights_avg_ntm
+            description: "Average minimum nights requirement over the next twelve months."
+
+          - name: maximum_nights_avg_ntm
+            description: "Average maximum nights requirement over the next twelve months."
+
+          - name: calendar_updated
+            description: "Timestamp or text indicating when the listing calendar was last updated."
+
+          - name: has_availability
+            description: "Flag indicating whether the listing has availability (t/f)."
+
+          - name: availability_30
+            description: "Number of available days in the next 30 days."
+
+          - name: availability_60
+            description: "Number of available days in the next 60 days."
+
+          - name: availability_90
+            description: "Number of available days in the next 90 days."
+
+          - name: availability_365
+            description: "Number of available days in the next 365 days."
+
+          - name: calendar_last_scraped
+            description: "Date when the calendar data was last scraped."
+
+          - name: number_of_reviews
+            description: "Total number of reviews received by the listing."
+
+          - name: number_of_reviews_ltm
+            description: "Number of reviews received in the last twelve months."
+
+          - name: number_of_reviews_l30d
+            description: "Number of reviews received in the last 30 days."
+
+          - name: availability_eoy
+            description: "Number of available days remaining until the end of the year."
+
+          - name: number_of_reviews_ly
+            description: "Number of reviews received in the previous year."
+
+          - name: estimated_occupancy_l365d
+            description: "Estimated occupancy rate over the last 365 days."
+
+          - name: estimated_revenue_l365d
+            description: "Estimated revenue generated over the last 365 days."
+
+          - name: first_review
+            description: "Date of the first recorded review for the listing."
+
+          - name: last_review
+            description: "Date of the most recent review for the listing."
+
+          - name: review_scores_rating
+            description: "Overall review score provided by guests."
+
+          - name: review_scores_accuracy
+            description: "Guest rating for accuracy of the listing description."
+
+          - name: review_scores_cleanliness
+            description: "Guest rating for cleanliness of the listing."
+
+          - name: review_scores_checkin
+            description: "Guest rating for the check-in experience."
+
+          - name: review_scores_communication
+            description: "Guest rating for host communication."
+
+          - name: review_scores_location
+            description: "Guest rating for the location of the listing."
+
+          - name: review_scores_value
+            description: "Guest rating for value for money."
+
+          - name: license
+            description: "License or registration information provided for the listing."
+
+          - name: instant_bookable
+            description: "Flag indicating whether the listing can be booked instantly (t/f)."
+
+          - name: calculated_host_listings_count
+            description: "Calculated total number of listings owned by the host."
+
+          - name: calculated_host_listings_count_entire_homes
+            description: "Calculated number of entire-home listings owned by the host."
+
+          - name: calculated_host_listings_count_private_rooms
+            description: "Calculated number of private-room listings owned by the host."
+
+          - name: calculated_host_listings_count_shared_rooms
+            description: "Calculated number of shared-room listings owned by the host."
+
+          - name: reviews_per_month
+            description: "Average number of reviews received per month."
+
+          - name: city
+            description: "City associated with the listing."
+
+          - name: country
+            description: "Country associated with the listing."
+
+          - name: extract_month
+            description: "YYYYMM batch identifier indicating when the data was ingested."
 
       - name: insideairbnb__raw_reviews
         description: "Raw InsideAirbnb reviews data at the bronze level for all cities"
+        columns:
+          - name: listing_id
+            description: "Identifier of the listing to which the review belongs, as provided by InsideAirbnb."
+
+          - name: id
+            description: "Unique review identifier assigned by InsideAirbnb."
+
+          - name: date
+            description: "Date when the review was submitted by the guest."
+
+          - name: reviewer_id
+            description: "Unique identifier of the reviewer who submitted the review."
+
+          - name: reviewer_name
+            description: "Display name of the reviewer as provided in the review."
+
+          - name: comments
+            description: "Free-text review comments written by the guest."
+
+          - name: city
+            description: "City associated with the reviewed listing."
+
+          - name: country
+            description: "Country associated with the reviewed listing."
+
+          - name: extract_month
+            description: "YYYYMM batch identifier indicating when the review data was ingested."
 
       - name: insideairbnb__raw_calendar
         description: "Raw InsideAirbnb calendar/availability data at the bronze level for all cities"
+        columns:
+          - name: listing_id
+            description: "Identifier of the listing to which this calendar record applies, as provided by InsideAirbnb."
+
+          - name: date
+            description: "Calendar date for which availability and pricing information is reported."
+
+          - name: available
+            description: "Availability flag from the source indicating whether the listing is available on the given date (t/f)."
+
+          - name: price
+            description: "Nightly base price for the listing on the given date, including currency symbols."
+
+          - name: adjusted_price
+            description: "Adjusted nightly price for the listing on the given date, including currency symbols."
+
+          - name: minimum_nights
+            description: "Minimum number of nights required for a booking starting on the given date."
+
+          - name: maximum_nights
+            description: "Maximum number of nights allowed for a booking starting on the given date."
+
+          - name: city
+            description: "City associated with the listing for this calendar record."
+
+          - name: country
+            description: "Country associated with the listing for this calendar record."
+
+          - name: extract_month
+            description: "YYYYMM batch identifier indicating when the calendar data was ingested."
 
       - name: openmeteo__raw_weather
         description: "Raw daily weather data from Open Meteo at bronze level for all cities"
+        columns:
+          - name: date
+            description: "Date of the weather observation as provided by the Open-Meteo API."
+
+          - name: temperature_2m_max
+            description: "Maximum air temperature at 2 meters above ground for the day, reported in degrees Celsius."
+
+          - name: temperature_2m_min
+            description: "Minimum air temperature at 2 meters above ground for the day, reported in degrees Celsius."
+
+          - name: temperature_2m_mean
+            description: "Mean air temperature at 2 meters above ground for the day, reported in degrees Celsius."
+
+          - name: precipitation_sum
+            description: "Total accumulated precipitation for the day, reported in millimeters."
+
+          - name: city
+            description: "City for which the weather observation applies."
+
+          - name: country
+            description: "Country for which the weather observation applies."
+
+          - name: extract_month
+            description: "YYYYMM batch identifier indicating when the weather data was ingested."
 
       - name: googletrends__raw_trends
         description: "Raw Google Trends interest over time data at the bronze level for all cities"
+        columns:
+          - name: date
+            description: "Date corresponding to the Google Trends interest measurement."
+
+          - name: visit_city
+            description: "Google Trends interest index (0-100) for the search query 'visit <city>'."
+
+          - name: things_to_do_in_city
+            description: "Google Trends interest index (0-100) for the search query 'things to do in <city>'."
+
+          - name: city_airbnb
+            description: "Google Trends interest index (0-100) for the search query '<city> airbnb'."
+
+          - name: isPartial
+            description: "Flag from Google Trends indicating whether the data point is partial or incomplete (True/False as text)."
+
+          - name: city
+            description: "City associated with the Google Trends search interest."
+
+          - name: country
+            description: "Country associated with the Google Trends search interest."
+
+          - name: extract_month
+            description: "YYYYMM batch identifier indicating when the Google Trends data was ingested."
