@@ -1,4 +1,14 @@
-with stg_listings as (
+WITH ranked_listings AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (
+            PARTITION BY city, country, id
+            ORDER BY extract_month DESC
+        ) AS rn
+    FROM {{ source('bronze', 'insideairbnb__raw_listings') }}
+),
+
+WITH stg_listings AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'city',
@@ -112,7 +122,8 @@ with stg_listings as (
         city,
         country,
         extract_month
-    FROM {{ source('bronze', 'insideairbnb__raw_listings') }}
+    FROM ranked_listings
+    WHERE rn = 1
 )
 
 SELECT * FROM stg_listings
