@@ -2,7 +2,7 @@
 
 This catalog documents all **raw data sources** in the **bronze layer** of the Global BnB Data Warehouse.  
 Bronze tables represent **source-aligned, lossless ingestions** with minimal structural changes and no business logic applied.
-All columns are of the STRING data type.
+All columns are of the VARCHAR data type.
 
 ---
 
