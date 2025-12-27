@@ -1,3 +1,13 @@
+WITH ranked_calendar AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (
+            PARTITION BY city, country, listing_id, date
+            ORDER BY extract_month DESC
+        ) AS rn
+    FROM {{ source('bronze', 'insideairbnb__raw_calendar') }}
+),
+
 WITH stg_calendar AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
@@ -19,7 +29,8 @@ WITH stg_calendar AS (
         city,
         country,
         extract_month
-    FROM {{ source('bronze', 'insideairbnb__raw_calendar') }}
+    FROM ranked_calendar
+    WHERE rn = 1
 )
 
 SELECT * FROM stg_calendar

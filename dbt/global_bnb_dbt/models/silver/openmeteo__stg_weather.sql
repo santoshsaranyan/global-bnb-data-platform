@@ -1,3 +1,13 @@
+WITH ranked_weather AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (
+            PARTITION BY city, country, date
+            ORDER BY extract_month DESC
+        ) AS rn
+    FROM {{ source('bronze', 'openmeteo__raw_weather') }}
+),
+
 WITH stg_weather AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
@@ -13,7 +23,8 @@ WITH stg_weather AS (
         city,
         country,
         extract_month
-    FROM {{ source('bronze', 'openmeteo__raw_weather') }}
+    FROM ranked_weather
+    WHERE rn = 1
 )
 
 SELECT * FROM stg_weather

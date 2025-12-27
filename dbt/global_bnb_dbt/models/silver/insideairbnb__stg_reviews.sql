@@ -1,3 +1,12 @@
+WITH ranked_reviews AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (
+            PARTITION BY city, country, id, listing_id, date
+            ORDER BY extract_month DESC
+        ) AS rn
+    FROM {{ source('bronze', 'insideairbnb__raw_reviews') }}
+),
 WITH stg_reviews AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
@@ -16,7 +25,8 @@ WITH stg_reviews AS (
         city,
         country,
         extract_month
-    FROM {{ source('bronze', 'insideairbnb__raw_reviews') }}
+    FROM ranked_reviews
+    WHERE rn = 1
 )
 
 SELECT * FROM stg_reviews

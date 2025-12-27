@@ -1,3 +1,13 @@
+WITH ranked_trends AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (
+            PARTITION BY city, country, date
+            ORDER BY extract_month DESC
+        ) AS rn
+    FROM {{ source('bronze', 'googletrends__raw_trends') }}
+),
+
 WITH stg_trends AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
@@ -16,8 +26,8 @@ WITH stg_trends AS (
         city,
         country,
         extract_month
-    FROM {{ source('bronze', 'googletrends__raw_trends') }}
-    WHERE "isPartial" = 'False'
+    FROM ranked_trends
+    WHERE rn = 1 AND "isPartial" = 'False'
 )
 
 SELECT * FROM stg_trends
