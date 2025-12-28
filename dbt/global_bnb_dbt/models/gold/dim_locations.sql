@@ -33,10 +33,10 @@ dim_locations AS (
         bco.region,
         bc.currency_code,
         bc.currency_name
-    FROM base_locations bl
-    LEFT JOIN base_currency bc
+    FROM base_locations AS bl
+    LEFT JOIN base_currency AS bc
         ON bl.country = bc.country
-    LEFT JOIN base_country bco
+    LEFT JOIN base_country AS bco
         ON bl.country = bco.country
 )
 

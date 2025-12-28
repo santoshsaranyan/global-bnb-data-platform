@@ -50,8 +50,8 @@ dim_dates AS (
             ELSE FALSE
         END AS is_holiday,
         bh.holiday_name
-    FROM base_dates bd
-    LEFT JOIN base_holidays bh
+    FROM base_dates AS bd
+    LEFT JOIN base_holidays AS bh
         ON bd.date = bh.date
 )   
 
