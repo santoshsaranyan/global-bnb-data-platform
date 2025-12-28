@@ -1,0 +1,105 @@
+models:
+  - name: nlp_host_descriptions
+    description: "View containing host description text data."
+    columns:
+      - name: host_id
+        description: "Surrogate key for the host (city + country + host_cid)."
+        tests:
+          - not_null
+          - unique
+
+      - name: host_cid
+        description: "Source host identifier."
+        tests:
+          - not_null
+
+      - name: host_name
+        description: "Host name."
+
+      - name: host_description
+        description: "Host description text."
+
+      - name: city
+        description: "City name."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country name."
+        tests:
+          - not_null
+
+  - name: nlp_listing_descriptions
+    description: "View containing listing description text data."
+    columns:
+      - name: listing_id
+        description: "Surrogate key for the listing."
+        tests:
+          - not_null
+
+      - name: listing_cid
+        description: "Source listing ID from InsideAirbnb."
+        tests:
+          - not_null
+
+      - name: host_cid
+        description: "Source host identifier."
+
+      - name: listing_name
+        description: "Listing title/name."
+
+      - name: listing_description
+        description: "Listing description text."
+
+      - name: neighborhood_overview
+        description: "Text description of the neighborhood."
+
+      - name: amenities
+        description: "Text description of listing amenities."
+
+      - name: city
+        description: "City name."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country name."
+        tests:
+          - not_null
+
+  - name: nlp_listing_reviews
+    description: "View containing listing review text data."
+    columns:
+      - name: review_id
+        description: "Surrogate key for the review."
+        tests:
+          - not_null
+          - unique
+
+      - name: listing_cid
+        description: "Source listing identifier this review belongs to."
+        tests:
+          - not_null
+
+      - name: review_cid
+        description: "Source review identifier."
+        tests:
+          - not_null
+
+      - name: review_date
+        description: "Date of the review."
+        tests:
+          - not_null
+
+      - name: review_comments
+        description: "Review comment text."
+
+      - name: city
+        description: "City for the reviewed listing."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country for the reviewed listing."
+        tests:
+          - not_null

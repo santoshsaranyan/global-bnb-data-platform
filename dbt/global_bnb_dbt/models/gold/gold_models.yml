@@ -1,0 +1,349 @@
+models:
+  - name: dim_dates
+    description: "Date dimension table."
+    columns:
+      - name: date_id
+        description: "Surrogate key for the date."
+        tests:
+          - not_null
+          - unique
+
+      - name: date
+        description: "Calendar date."
+        tests:
+          - not_null
+
+      - name: day_of_week
+        description: "ISO day of week number (1=Monday, 7=Sunday)."
+
+      - name: day_name
+        description: "Name of the day."
+
+      - name: week_of_year
+        description: "Week number of the year."
+
+      - name: month
+        description: "Month number (1-12)."
+
+      - name: month_name
+        description: "Name of the month."
+
+      - name: quarter
+        description: "Quarter of the year (1-4)."
+
+      - name: year
+        description: "Calendar year."
+
+      - name: is_weekend
+        description: "Flag indicating whether the date falls on a weekend."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: is_holiday
+        description: "Flag indicating whether the date is a public holiday."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: holiday_name
+        description: "Name of the holiday."
+
+  - name: dim_locations
+    description: "Location dimension table."
+    columns:
+      - name: location_id
+        description: "Surrogate key for the location (city + country)."
+        tests:
+          - not_null
+          - unique
+
+      - name: city
+        description: "City name."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Country name."
+        tests:
+          - not_null
+
+      - name: country_code
+        description: "Country code."
+
+      - name: region
+        description: "Geographic region."
+
+      - name: currency_code
+        description: "Currency code."
+
+      - name: currency_name
+        description: "Currency name."
+
+  - name: dim_listings
+    description: "Listing dimension table."
+    columns:
+      - name: listing_id
+        description: "Surrogate key for the listing."
+        tests:
+          - not_null
+          - unique
+
+      - name: listing_cid
+        description: "Source listing ID from InsideAirbnb."
+
+      - name: listing_name
+        description: "Listing title/name."
+
+      - name: property_type
+        description: "Property type."
+
+      - name: room_type
+        description: "Room type."
+
+      - name: bathrooms
+        description: "Number of bathrooms."
+
+      - name: bathroom_type
+        description: "Bathroom type."
+
+      - name: bedrooms
+        description: "Number of bedrooms."
+
+      - name: beds
+        description: "Number of beds."
+
+      - name: accommodates
+        description: "Number of guests the listing accommodates."
+
+      - name: instant_bookable
+        description: "Flag indicating whether the listing is instantly bookable."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: latitude
+        description: "Latitude of the listing."
+
+      - name: longitude
+        description: "Longitude of the listing."
+
+      - name: listing_neighbourhood
+        description: "Neighbourhood of the listing."
+
+  - name: dim_hosts
+    description: "Host dimension table."
+    columns:
+      - name: host_id
+        description: "Surrogate key for the host."
+        tests:
+          - not_null
+          - unique
+
+      - name: host_cid
+        description: "Source host identifier."
+
+      - name: host_name
+        description: "Host name."
+
+      - name: host_since
+        description: "Date when the host joined."
+
+      - name: host_response_time
+        description: "Host response time."
+
+      - name: host_response_rate
+        description: "Host response rate percentage."
+
+      - name: host_acceptance_rate
+        description: "Host acceptance rate percentage."
+
+      - name: host_is_superhost
+        description: "Flag indicating whether the host is a Superhost."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_total_listings_count
+        description: "Total number of listings owned by the host."
+
+      - name: host_identity_verified
+        description: "Flag indicating whether the host identity is verified."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_has_profile_pic
+        description: "Flag indicating whether the host has a profile picture."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: host_neighbourhood
+        description: "Neighbourhood where the host is located."
+
+  - name: fact_listings
+    description: "Fact table for daily listing availability and pricing."
+    columns:
+      - name: listing_id
+        description: "Foreign key to dim_listings."
+
+      - name: host_id
+        description: "Foreign key to dim_hosts."
+
+      - name: location_id
+        description: "Foreign key to dim_locations."
+
+      - name: date_id
+        description: "Foreign key to dim_dates."
+
+      - name: nightly_price
+        description: "Nightly price."
+
+      - name: minimum_nights
+        description: "Minimum nights required for booking."
+
+      - name: maximum_nights
+        description: "Maximum nights allowed for booking."
+
+      - name: is_available
+        description: "Flag indicating whether the listing is available on the given date."
+        tests:
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+      - name: estimated_occupancy
+        description: "Estimated occupancy indicator."
+
+      - name: estimated_revenue
+        description: "Estimated revenue."
+
+  - name: fact_reviews
+    description: "Fact table for listing review ratings."
+    columns:
+      - name: listing_id
+        description: "Foreign key to dim_listings."
+
+      - name: host_id
+        description: "Foreign key to dim_hosts."
+
+      - name: location_id
+        description: "Foreign key to dim_locations."
+
+      - name: review_count
+        description: "Total number of reviews."
+
+      - name: overall_rating
+        description: "Overall review rating."
+
+      - name: cleanliness_rating
+        description: "Cleanliness rating."
+
+      - name: communication_rating
+        description: "Communication rating."
+
+      - name: checkin_rating
+        description: "Check-in rating."
+
+      - name: location_rating
+        description: "Location rating."
+
+      - name: value_rating
+        description: "Value rating."
+
+  - name: fact_market_trends
+    description: "Fact table for Google Trends data by date and location."
+    columns:
+      - name: date_id
+        description: "Foreign key to dim_dates."
+
+      - name: location_id
+        description: "Foreign key to dim_locations."
+
+      - name: visit_city_index
+        description: "Google Trends index for visit city queries."
+
+      - name: things_to_do_index
+        description: "Google Trends index for things to do in city queries."
+
+      - name: city_airbnb_index
+        description: "Google Trends index for city Airbnb queries."
+
+  - name: fact_weather
+    description: "Fact table for daily weather observations."
+    columns:
+      - name: date_id
+        description: "Foreign key to dim_dates."
+
+      - name: location_id
+        description: "Foreign key to dim_locations."
+
+      - name: temperature_2m_max
+        description: "Daily maximum temperature."
+
+      - name: temperature_2m_min
+        description: "Daily minimum temperature."
+
+      - name: temperature_2m_mean
+        description: "Daily mean temperature."
+
+      - name: precipitation_sum
+        description: "Total daily precipitation."
+
+  - name: vw_market_performance
+    description: "View combining daily listing performance metrics by date and location."
+    columns:
+      - name: date
+        description: "Calendar date."
+
+      - name: city
+        description: "City name."
+
+      - name: country
+        description: "Country name."
+
+      - name: active_listings
+        description: "Number of active listings."
+
+      - name: avg_nightly_price
+        description: "Average nightly price."
+
+      - name: estimated_booked_nights
+        description: "Estimated number of booked nights."
+
+      - name: estimated_revenue
+        description: "Estimated revenue."
+
+      - name: visit_city_index
+        description: "Google Trends visit city index."
+
+  - name: vw_host_listing_quality
+    description: "View combining host, listing, pricing, and review data."
+    columns:
+      - name: host_id
+        description: "Host surrogate key."
+
+      - name: listing_id
+        description: "Listing surrogate key."
+
+      - name: city
+        description: "City name."
+
+      - name: avg_nightly_price
+        description: "Average nightly price."
+
+      - name: estimated_revenue
+        description: "Estimated revenue."
+
+      - name: overall_rating
+        description: "Overall review rating."
+
+      - name: review_count
+        description: "Total number of reviews."
