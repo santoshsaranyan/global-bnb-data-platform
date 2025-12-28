@@ -41,6 +41,9 @@ models:
     gold:
       +materialized: table
       +schema: gold
+    gold_nlp:
+      +materialized: view
+      +schema: gold_nlp
 
 seeds:
   global_bnb_dbt:
