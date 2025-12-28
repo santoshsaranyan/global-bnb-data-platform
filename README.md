@@ -12,12 +12,12 @@ This project aims to build an automated and scalable pipeline for ingesting, tra
 - ![Snowflake](https://img.shields.io/badge/snowflake-%2329B5E8.svg?style=for-the-badge&logo=snowflake&logoColor=white) - Data Warehouse
 
 ## Project Objectives
-- Develop a fully automated ELT pipeline from raw data ingestion to warehouse loading.
-- Implement Airflow DAGs for end-to-end orchestration and scheduling.
-- Use dbt to define, document, and version-control SQL-based data transformations.
-- Leverage Snowflake as the central cloud data warehouse for storage and modeling.
-- Incorporate GCS as the external staging layer for raw data.
-- Follow modular, maintainable, and production-ready data engineering design principles.
+- Developed a fully automated ELT pipeline from raw data ingestion to warehouse loading.
+- Implemented Airflow DAGs for end-to-end orchestration and scheduling.
+- Used dbt to define, document, and version-control SQL-based data transformations.
+- Leveraged Snowflake as the central cloud data warehouse for storage and modeling.
+- Incorporated GCS as the external staging layer for raw data.
+- Followed modular, maintainable, and production-ready data engineering design principles.
   
 ## Data Architecture
 ![Data Architecture](https://github.com/santoshsaranyan/global-bnb-data-platform/blob/main/images/GlobalBnBDataPlatformImage.png)
