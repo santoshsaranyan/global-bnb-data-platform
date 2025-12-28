@@ -8,7 +8,7 @@ WITH ranked_calendar AS (
     FROM {{ source('bronze', 'insideairbnb__raw_calendar') }}
 ),
 
-WITH stg_calendar AS (
+stg_calendar AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'listing_id',

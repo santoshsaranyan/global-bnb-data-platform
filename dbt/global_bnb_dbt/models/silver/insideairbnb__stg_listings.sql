@@ -8,7 +8,7 @@ WITH ranked_listings AS (
     FROM {{ source('bronze', 'insideairbnb__raw_listings') }}
 ),
 
-WITH stg_listings AS (
+stg_listings AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'city',

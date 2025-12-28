@@ -7,7 +7,7 @@ WITH ranked_reviews AS (
         ) AS rn
     FROM {{ source('bronze', 'insideairbnb__raw_reviews') }}
 ),
-WITH stg_reviews AS (
+stg_reviews AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'listing_id',

@@ -8,7 +8,7 @@ WITH ranked_weather AS (
     FROM {{ source('bronze', 'openmeteo__raw_weather') }}
 ),
 
-WITH stg_weather AS (
+stg_weather AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'date',

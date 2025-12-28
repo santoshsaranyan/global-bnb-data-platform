@@ -8,7 +8,7 @@ WITH ranked_trends AS (
     FROM {{ source('bronze', 'googletrends__raw_trends') }}
 ),
 
-WITH stg_trends AS (
+stg_trends AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
             'date',
